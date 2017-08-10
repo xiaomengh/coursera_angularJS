@@ -14,13 +14,14 @@
          <div class="form-group">
              <input id="lunch-menu" type="text"
              placeholder="list comma separated dishes you usually have for lunch"
-             class="form-control" ng-model="orders">
+             class="form-control" ng-model="orders" style='border-color:{{color}}'>
          </div>
+         <span class='help-block'>empty item doesn't not count.</span>
          <div class="form-group">
              <button class="btn btn-default" ng-click="checkIfTooMuch()">Check If Too Much</button>
          </div>
          <div class="form-group message">
-           {{message}}
+           <p style='color:{{color}}'>{{message}}</p>
            <!-- Your message can go here. -->
          </div>
    </div>
