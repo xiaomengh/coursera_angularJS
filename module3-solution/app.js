@@ -18,7 +18,7 @@
         url:ApiBasePath+'/menu_items.json'
       }).then(function(response){
         var menu_items=response.data.menu_items;
-        foundItems = menu_items.filter(function(item){return item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1; });
+        foundItems = menu_items.filter(function(item){return item.description.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1; });
 
         console.log('foundItems',foundItems)
         return foundItems;
@@ -37,6 +37,11 @@
       promise=MenuSearchService.getMatchedMenuItems(controller.searchTerm);
       promise.then(function(response){
         controller.found=response
+        if(controller.found.length===0){
+          controller.message='Sorry, nothing found.';
+        }else{
+          controller.message='';
+        }
       })
     };
     controller.removeItem=function(itemIndex){
@@ -49,6 +54,7 @@
       templateUrl: 'founditem.html',
       scope:{
         items:'<',
+        message:'<',
         onRemove:'&'
       },
       controller:FoundItemsDirectiveController,
