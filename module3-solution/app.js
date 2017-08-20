@@ -18,7 +18,7 @@
         url:ApiBasePath+'/menu_items.json'
       }).then(function(response){
         var menu_items=response.data.menu_items;
-        foundItems = menu_items.filter(function(item){return item.description.indexOf(searchTerm) != -1; });
+        foundItems = menu_items.filter(function(item){return item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1; });
 
         console.log('foundItems',foundItems)
         return foundItems;
